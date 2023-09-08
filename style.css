@@ -1,0 +1,272 @@
+/* Style główne strony */
+body {
+    font-family:'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #343131;
+}
+
+/* Pasek górny */
+.navbar {
+    background-color: #1d1d1d;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: solid 2px #000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.container1 {
+    display: flex;
+    padding: 10px;
+}
+
+.screen {
+    display: flex;
+    padding: 0 20px 0 20px;
+}
+
+/* Moduły */
+.module1,
+.module2,
+.module3 {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Moduł 1 - Romby */
+.module1 {
+    padding-right: 100px;
+    box-sizing: border-box;
+    position: relative; 
+}
+
+.module2 {
+    padding-top: 120px;
+    padding-right: 200px;
+}
+
+.module3 {
+    color: #fff;
+    overflow: hidden;
+    font-size: 13px;
+    padding-inline: 20px;
+}
+
+/* Przycisk w Module2 */
+.module2-button {
+    position: absolute;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-left: 200px;
+}
+
+/* Zmienne kolorów */
+@property --color-1 {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: rgb(64, 181, 156);
+}
+
+@property --color-2 {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: rgb(195, 98, 152);
+}
+
+.round-button {
+    --color-1: rgb(64, 181, 156);
+    --color-2: rgb(195, 98, 152);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #555;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    background-image: linear-gradient(90deg, var(--color-1), var(--color-2));
+    transition: --color-1 1000ms, --color-2 1000ms 500ms;
+    border: solid 2px black;
+}
+
+.round-button:hover {
+    transform: scale(1.1);
+    --color-1: rgb(195, 98, 152);
+    --color-2: rgb(64, 181, 156);
+    background-image: linear-gradient(90deg, var(--color-1), var(--color-2));
+}
+
+.rhombus {
+    background-color: #000; 
+    height: 100px; 
+    aspect-ratio: 1/1;
+    margin-left: 30px;
+    transition: transform 600ms;
+    border: solid 2px;
+    border-radius: 5%;
+}
+
+.rhombus-left-bottom {
+    border-color: rgb(64, 181, 156);
+}
+
+.rhombus-right-top {
+    border-color: rgb(195, 98, 152);
+}
+
+/* Kontener Rombów */
+.rhombus-container {
+    position: fixed; 
+    display: flex;
+    transform: rotate(-45deg); 
+    margin-left: -60px; 
+    margin-top: 60px;
+}
+
+.rhombus-left-bottom:hover {
+    transform: translateX(7px);
+    transition: transform 250ms;
+}
+
+.rhombus-right-top:hover {
+    transform: translateX(-7px);
+    transition: transform 250ms;
+}
+
+/* Kontener Prostokątów */
+.rectangle-container {
+    position: absolute;
+    height: 40px;
+    width: 100px;
+    margin-left: 50px;
+    transition: 1000ms;
+}
+
+.rectangle-container:hover {
+    transform: rotate(180deg) translateY(-40px);
+}
+
+.rectangle {
+    background-color: #000;
+    height: 15px;
+    width: 100px;
+    border: solid 1px #cbcbcb;
+    border-radius: 2%;
+}
+
+.rectangle1 {
+    margin-bottom: 45px;
+}
+
+/* Media queries dla różnych szerokości ekranu */
+@media (max-width: 582px) {
+    /* Styl dla ekranów o szerokości do 582px */
+    .container1 {
+        flex-direction: column;
+        width: 90%;
+        height: 50vh;
+    }
+    .container2 {
+        height: 30vh;
+    }
+    .module1 {
+        flex: 3;
+        height: 30vh;
+    }
+    .module2 {
+        flex: 1;
+        height: 10vh;
+        padding-top: 205px;
+        padding-right: 100px;
+    }
+    .module3 {
+        height: 37vh;
+        padding-top: 45px;
+    }
+    .screen {
+        flex-direction: column;
+    }
+    .rhombus-left-bottom {
+        left: 60px; 
+        bottom: -40px; 
+    }
+    .rhombus-right-top {
+        right: 60px; 
+        top: 0px;
+    }
+}
+
+@media (min-width: 583px) and (max-width: 900px) {
+    /* Styl dla ekranów o szerokości od 583px do 900px */
+    .container1 {
+        flex-direction: column;
+        width: 50%;
+        height: 80vh;
+    }
+    .module1 {
+        flex: 3;
+        height: 50vh;
+    }
+    .module2 {
+        height: 30vh;
+        padding-bottom: 150px;
+    }
+    .module3 {
+        height: 80vh;
+        padding-right: 50px;
+    }
+    .container2 {
+        width: 40%;
+    }
+    .screen {
+        flex-direction: row;
+    }
+    .rhombus-left-bottom {
+        left: 40px; 
+        bottom: 0px; 
+    }
+    .rhombus-right-top {
+        right: 40px; 
+        top: 0px;
+    }
+}
+
+@media (min-width: 901px) {
+    /* Styl dla ekranów o szerokości od 901px wzwyż */
+    .container1 {
+        flex-direction: row;
+        width: 70%;
+        height: 80vh;
+    }
+    .screen {
+        flex-direction: row;
+    }
+    .container2 {
+        width: 30%;
+        height: 80vh;
+    }
+    .module3 {
+        max-width: 250px;
+    }
+    .rhombus-left-bottom {
+        left: 40px; 
+        bottom: 40px; 
+    }
+    .rhombus-right-top {
+        right: 40px; 
+        top: 20px;
+    }
+}
